@@ -1,9 +1,9 @@
 set number "This turns on line numbering
 set numberwidth=4
 "colorscheme morning
-set tabstop=4
-set softtabstop=4
-set expandtab
+"set tabstop=4
+"set softtabstop=4
+"set expandtab
 set showcmd
 set cursorline
 "filetype indent on      " load filetype-specific indent files
@@ -76,10 +76,11 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 "c family format
-au BufNewFile,BufRead *.c, *.cpp
+au BufNewFile,BufRead *.c, *.cpp, *.h, *.hpp
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
+    \ set noexpandtab |
     \ set fileformat=unix
 "format for .js .html .css
 au BufNewFile,BufRead *.js, *.html, *.css
