@@ -1,25 +1,3 @@
-set number "This turns on line numbering
-set numberwidth=4
-"colorscheme morning
-"set tabstop=4
-"set softtabstop=4
-"set expandtab
-set showcmd
-set cursorline
-"filetype indent on      " load filetype-specific indent files
-set wildmenu " autocomplete for command menu
-set incsearch " search as characters are entered
-set hlsearch " highlight matches
-nnoremap <leader><space> :nohlsearch<CR>
-set foldenable          " enable folding
-set foldlevelstart=10   " open most folds by default
-set foldnestmax=10      " 10 nested fold max
-nnoremap <space> za
-set foldmethod=indent   " fold based on indent level
-set hidden " Leave hidden buffers open
-set history=100 "by default Vim saves your last 8 commands.  We can handle more
-set encoding=utf-8 "set encoding
-
 "begin configuring Vundle
 set nocompatible              " required
 filetype off                  " required
@@ -54,6 +32,28 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "end configuring Vundle
 
+"layout setup
+set number "This turns on line numbering
+set numberwidth=4
+set showcmd
+set cursorline
+"search
+set wildmenu " autocomplete for command menu
+set incsearch " search as characters are entered
+set hlsearch " highlight matches
+nnoremap <leader><space> :nohlsearch<CR>
+"folding
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+nnoremap <space> za
+set foldmethod=indent   " fold based on indent level
+"buffers
+set hidden " Leave hidden buffers open
+set history=100 "by default Vim saves your last 8 commands.  We can handle more
+"encoding
+set encoding=utf-8 "set encoding
+
 "split screen
 set splitbelow
 set splitright
@@ -67,31 +67,15 @@ inoremap jk <esc>
 "preview docstring of simpylFold
 let g:SimpylFold_docstring_preview=1
 "python format
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+autocmd Filetype python setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 autoindent
+au BufNewFile *.py set fileformat=unix
 "c family format
-au BufNewFile,BufRead *.c, *.cpp, *.h, *.hpp
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set noexpandtab |
-    \ set fileformat=unix
-"format for .js .html .css
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set fileformat=unix
+autocmd Filetype c,cpp setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+au BufNewFile *.c, *.cpp, *.h, *.hpp set fileformat=unix
 "configure youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> "go to definition
 "configure python-mode
 let g:pymode = 1
 let g:pymode_warnings = 1
@@ -123,6 +107,7 @@ if has('gui_running')
 else
 	colorscheme zenburn
 endif
-call togglebg#map("<F5>")
+
+call togglebg#map("<F5>") "toggle colors
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 set clipboard=unnamed "access system clipboard from vim
