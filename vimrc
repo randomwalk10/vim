@@ -29,9 +29,14 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+filetype on " set file type detection on
 filetype plugin indent on    " required
 "end configuring Vundle
 
+"map leader to ;
+let mapleader=";" "map leader to ;
+"source vimrc everytime vimrc is saved
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "layout setup
 set number "This turns on line numbering
 set numberwidth=4
@@ -40,6 +45,7 @@ set cursorline
 "search
 set wildmenu " autocomplete for command menu
 set incsearch " search as characters are entered
+set ignorecase " case insensitive
 set hlsearch " highlight matches
 nnoremap <leader><space> :nohlsearch<CR>
 "folding
@@ -75,7 +81,10 @@ au BufNewFile *.c, *.cpp, *.h, *.hpp set fileformat=unix
 "configure youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> "go to definition
+" go to declaration
+map <leader>jc :YcmCompleter GoToDeclaration<CR>
+" go to definition
+map <leader>jd :YcmCompleter GoToDefinition<CR>
 "configure python-mode
 let g:pymode = 1
 let g:pymode_warnings = 1
