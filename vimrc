@@ -11,10 +11,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/indentpython.vim' "help with python indentation
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'python-mode/python-mode'
 Plugin 'scrooloose/syntastic'
@@ -27,6 +30,8 @@ Plugin 'derekwyatt/vim-fswitch'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/DrawIt'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -104,6 +109,8 @@ let g:pymode_folding = 1
 let g:pymode_motion = 1 "enable python motions, see docs
 let g:pymode_run = 1 "default
 let g:pymode_run_bind = '<leader>r' "default
+let g:pymode_virtualenv=1
+let g:pymode_virtualenv_path=$VIRTUAL_ENV
 "python with virtualenv support
 py << EOF
 import os
@@ -117,17 +124,12 @@ EOF
 let python_highlight_all=1
 syntax on
 " set background and colorscheme
-" if has('gui_running')
-" 	set background=dark
-" 	colorscheme solarized
-" else
-" 	colorscheme zenburn
-" endif
 set background=dark
 " colorscheme solarized
 colorscheme zenburn
 " colorscheme molokai
 " colorscheme phd
+call togglebg#map("<F5>") "toggle colors
 
 "highlight indentation
 "auto start indent guide
@@ -185,6 +187,20 @@ let g:tagbar_type_cpp = {
 	\ }
 	\ }
 
-call togglebg#map("<F5>") "toggle colors
+"configure UltiSnips
+" UltiSnips 的 tab 键与 YCM 冲突，重新设定
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
+let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+
+"configure nerd tree
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+nmap <Leader>fl :NERDTreeToggle<CR>
+let NERDTreeWinSize=32
+let NERDTreeWinPos="right"
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeAutoDeleteBuffer=1
+
+
 set clipboard=unnamed "access system clipboard from vim
