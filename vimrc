@@ -39,6 +39,7 @@ Plugin 'vim-scripts/DrawIt'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'lervag/vimtex'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 
@@ -212,6 +213,13 @@ let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 " " 默认 --c++-kinds=+p+l，重新设置为 --c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v
 " " 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
 let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+
+" vimtex options
+let g:vimtex_latexmk_options='-pdf -pdflatex=\"xelatex -synctex=1 \%S \%O\" -verbose -file-line-error -interaction=nonstopmode'
+if !exists('g:ycm_semantic_triggers')
+let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 " 正向遍历同名标签
 nmap <Leader>tn :tnext<CR>
