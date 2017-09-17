@@ -221,6 +221,9 @@ let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
+" CUDA syntax
+autocmd BufRead,BufNewFile *.cu set filetype=cpp
+
 " 正向遍历同名标签
 nmap <Leader>tn :tnext<CR>
 " " 反向遍历同名标签
