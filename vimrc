@@ -98,8 +98,8 @@ autocmd Filetype c,cpp setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 au BufNewFile *.c, *.cpp, *.h, *.hpp set fileformat=unix
 "configure youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = 'python'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = '/usr/bin/python'
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_auto_trigger=1
 " go to declaration
@@ -220,6 +220,8 @@ if !exists('g:ycm_semantic_triggers')
 let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+" suppress callback function warning
+let g:vimtex_compiler_latexmk = {'callback' : 0}
 
 " CUDA syntax
 autocmd BufRead,BufNewFile *.cu set filetype=cpp
