@@ -96,11 +96,11 @@ autocmd Filetype c,cpp setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 au BufNewFile *.c, *.cpp, *.h, *.hpp set fileformat=unix
 "configure youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf_c.py'
 let g:ycm_python_binary_path = '/usr/bin/python'
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_auto_trigger=1
-let g:ycm_confirm_extra_conf = 0 "turn off warning
 " go to declaration
 map <leader>jc :YcmCompleter GoToDeclaration<CR>
 " go to definition

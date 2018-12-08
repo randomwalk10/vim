@@ -4,5 +4,5 @@ def Settings(**kwargs):
     """
     return {
         'sys_path': [], \
-        'interpreter_path': '/anaconda3/envs/dsnd/bin/python'
+        'interpreter_path': '/anaconda3/envs/guidev/bin/python'
     }
