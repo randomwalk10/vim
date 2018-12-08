@@ -1,0 +1,17 @@
+# you have ctags but it does not work...
+$ ctags -R --exclude=.git --exclude=log *
+ctags: illegal option -- R
+usage: ctags [-BFadtuwvx] [-f tagsfile] file ...
+
+#you need to get new ctags, i recommend homebrew but anything will work
+$ brew install ctags
+
+#alias ctags if you used homebrew
+$ alias ctags="`brew --prefix`/bin/ctags"
+
+#try again!
+ctags -R --exclude=.git --exclude=log *
+
+#puts tags file into you .gitignore (probably global) and you're all set!
+
+#PS. i was inspired to install ctags by https://workshops.thoughtbot.com/vim video by @r00k, thanks man!

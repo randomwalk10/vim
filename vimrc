@@ -16,11 +16,9 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/indentpython.vim' "help with python indentation
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'davidhalter/jedi-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'python-mode/python-mode'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/DfrankUtil'
@@ -102,6 +100,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = '/usr/bin/python'
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_auto_trigger=1
+let g:ycm_confirm_extra_conf = 0 "turn off warning
 " go to declaration
 map <leader>jc :YcmCompleter GoToDeclaration<CR>
 " go to definition
@@ -110,21 +109,6 @@ map <leader>jd :YcmCompleter GoToDefinition<CR>
 map <leader>ji :YcmCompleter GoToInclude<CR>
 " go to reference(python)
 map <leader>jr :YcmCompleter GoToReferences<CR>
-"configure python-mode
-let g:pymode = 1
-let g:pymode_warnings = 1
-let g:pymode_trim_whitespaces = 1
-let g:pymode_options = 1
-let g:pymode_options_max_line_length = 79
-let g:pymode_options_colorcolumn = 1
-let g:pymode_python = 'python' "python version
-let g:pymode_indent = 1
-let g:pymode_folding = 0
-let g:pymode_motion = 1 "enable python motions, see docs
-let g:pymode_run = 1 "default
-let g:pymode_run_bind = '<leader>r' "default
-let g:pymode_virtualenv=1
-let g:pymode_virtualenv_path=$VIRTUAL_ENV
 "configure powerline
 let g:Powerline_colorscheme='solarized256'
 "python with virtualenv support
@@ -234,9 +218,6 @@ nmap <Leader>tp :tprevious<CR>
 " add directory to path
 if isdirectory('/usr/local/include')
 	set path+=/usr/local/include
-endif
-if isdirectory('/Users/randomwalk10/Documents/cpp_workspace/microzed/project_genesis/project_genesis.sdk/standalone_bsp_0/ps7_cortexa9_0/include')
-	set path+=/Users/randomwalk10/Documents/cpp_workspace/microzed/project_genesis/project_genesis.sdk/standalone_bsp_0/ps7_cortexa9_0/include
 endif
 
 "configure nerd tree
