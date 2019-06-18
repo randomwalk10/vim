@@ -15,7 +15,7 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/indentpython.vim' "help with python indentation
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe' " use system python in the backend
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -95,10 +95,13 @@ au BufNewFile *.py set fileformat=unix
 autocmd Filetype c,cpp setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 au BufNewFile *.c, *.cpp, *.h, *.hpp set fileformat=unix
 "configure youcompleteme
+"each time after installation/update, run:
+"cd ~/.vim/bundle/YouComepleteMe
+"/usr/bin/python install.py --clang-completer
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf_c.py'
-let g:ycm_python_binary_path = '/usr/bin/python'
+let g:ycm_python_binary_path = '/usr/bin/python' " path to system python
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_auto_trigger=1
 " go to declaration
