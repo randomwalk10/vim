@@ -1,3 +1,8 @@
+"
+" Before doing anything, do the following:
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" Then launch vim and run :PluginInstall
+"
 "begin configuring Vundle
 set nocompatible              " required
 filetype off                  " required
